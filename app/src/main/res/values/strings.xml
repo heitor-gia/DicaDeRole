@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Dica de Rolê</string>
+    <string name="checkin">Checkin</string>
+    <string name="route">Rota</string>
+    <string name="organizers_label">organização</string>
+    <string name="event_date_label">Data do evento</string>
+    <string name="event_price_label">Preço</string>
+    <string name="event_discount_label">Desconto</string>
+    <string name="invalidEmailMessage">Email inválido</string>
+    <string name="was_not_possible_to_load_data">Não foi possível carregar a página</string>
+    <string name="name_label">Nome</string>
+    <string name="email_label">E-mail</string>
+    <string name="do_your_checkin">Faça o seu checkin</string>
+</resources>

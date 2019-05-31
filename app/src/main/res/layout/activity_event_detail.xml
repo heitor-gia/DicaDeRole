@@ -1,0 +1,263 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="event"
+            type="com.heitoroliveira.dicaderole.presentation.eventdetail.model.EventDetail" />
+    </data>
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:fitsSystemWindows="true"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="true"
+                    app:layout_collapseMode="parallax">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:transitionName="eventImage"
+                        app:srcUrl="@{event.image}" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/image_toolbar_gradient" />
+
+                </FrameLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.Light"
+                    app:title="@{event.title}" />
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/ivEventDateIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:src="@drawable/ic_calendar"
+                    android:tint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="@id/tvEventDate"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvEventDateLabel" />
+
+                <TextView
+                    android:id="@+id/tvEventDateLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/event_date_label"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ivEventDateIcon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvEventDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{event.date}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/ivEventDateIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventDateLabel"
+                    tools:text="12/12/2012" />
+
+
+                <ImageView
+                    android:id="@+id/ivEventPriceIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:src="@drawable/ic_dollar"
+                    android:tint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="@id/tvEventPrice"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvEventPriceLabel" />
+
+                <TextView
+                    android:id="@+id/tvEventPriceLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/event_price_label"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/ivEventPriceIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventDate" />
+
+                <TextView
+                    android:id="@+id/tvEventPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{event.price}"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@id/ivEventPriceIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventPriceLabel"
+                    tools:text="R$32,90" />
+
+                <ImageView
+                    android:id="@+id/ivEventDiscountIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:src="@drawable/ic_tag"
+                    android:tint="@color/colorPrimaryDark"
+                    app:layout_constraintBottom_toBottomOf="@id/tvEventDiscount"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintStart_toStartOf="@id/barrier"
+                    app:layout_constraintTop_toTopOf="@id/tvEventDiscountLabel" />
+
+                <TextView
+                    android:id="@+id/tvEventDiscountLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/event_discount_label"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/tvEventDiscount"
+
+                    app:layout_constraintStart_toEndOf="@id/ivEventDiscountIcon"
+                    app:layout_constraintTop_toTopOf="@id/tvEventDateLabel"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tvEventDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@{event.discount}"
+                    android:textSize="28sp"
+                    android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="@id/tvEventPrice"
+                    app:layout_constraintStart_toEndOf="@id/ivEventDiscountIcon"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventDiscountLabel"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    tools:text="-R$23,43" />
+
+                <TextView
+                    android:id="@+id/tvEventDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="@{event.description}"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvEventPrice"
+                    tools:text="@tools:sample/lorem" />
+
+                <TextView
+                    android:id="@+id/tvOrganizersSection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/organizers_label"
+                    android:textAllCaps="true"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:visibility="@{event.organizers.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEventDescription" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvOrganizers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:horizontalSpacing="8dp"
+                    android:numColumns="2"
+                    android:visibility="@{event.organizers.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintEnd_toEndOf="@+id/tvEventDescription"
+                    app:layout_constraintStart_toStartOf="@+id/tvEventDescription"
+                    app:layout_constraintTop_toBottomOf="@id/tvOrganizersSection"
+                    tools:listitem="@layout/item_organizer" />
+
+
+                <FrameLayout
+                    android:id="@+id/loadingLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/white"
+                    android:paddingTop="15dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal" />
+                </FrameLayout>
+
+                <android.support.constraint.Barrier
+                    android:id="@+id/barrier"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:barrierDirection="end"
+                    app:constraint_referenced_ids="tvEventPrice,tvEventPriceLabel,tvEventDate,tvEventDateLabel" />
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>
